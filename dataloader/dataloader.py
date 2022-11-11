@@ -30,7 +30,7 @@ class MyDataset(Dataset):
         label = self.label[idx]
         label_id = self.label2id[label]
         sentence = self.sentence[idx]
-        token = ["[CLS]"] + self.tokenizer.tokenize(sentence)[:self.config.max_len] + ["[SEP]"]
+        token = ["[CLS]"] + self.tokenizer.tokenize(self.config.template + sentence[:self.config.max_len]) + ["[SEP]"]
         token_len = len(token)
         token2id = self.tokenizer.convert_tokens_to_ids(token)
 
